@@ -1,5 +1,5 @@
 
-package com.nqysit.whatsapp;
+package de.robertduda.whatsapp;
 
 import java.util.*;
 

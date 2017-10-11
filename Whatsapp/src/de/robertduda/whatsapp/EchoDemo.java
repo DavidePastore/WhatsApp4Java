@@ -3,51 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nqysit.whatsapp;
+package de.robertduda.whatsapp;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author developer
+ * @author Robert Duda, Margaruga
+ *
  */
 public class EchoDemo {
 
     public static void main(String[] args) throws ClientIsNotInit {
-
         boolean run = true;
-        
-        Client.init("/usr/bin/python", "JavaWhatsApp/yowsup/yowsupclient.py");
-        
+        Client client = new Client("/usr/bin/python", "Java4Whatsapp/yowsup/yowsupclient.py");
+        client.init();
         while (run) {
-
-            Client.ListenIncomingMessages();
-
-            ArrayList<Contact> unreaden = Client.getUnseenContacts();
-
+            client.listenIncomingMessages();
+            ArrayList<Contact> unreaden = client.getUnseenContacts();
             if (!unreaden.isEmpty()) {
-
                 for (Contact ur : unreaden) {
-
                     String from = ur.getNumber();
                     String text = ur.getUnseenMessage();
-
                     System.out.println(from + "-" + text);
-
                     if (text.equals("stop")) {
-                        Client.killit();
+                        client.killit();
                         run = false;
                         break;
                     }
-
-                    Client.sendMessage(from, text);
-
+                    client.sendMessage(from, text);
                 }
-
             } else {
-
                 System.out.println("There are not new messages");
-
             }
         }
     }

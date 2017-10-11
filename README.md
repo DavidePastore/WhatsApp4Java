@@ -4,12 +4,10 @@
 
 Send and listen messages through WhatsApp from a Java Program.
 
+This is and updated Version of JavaWhatsApp.
 This is done thanks to Margaruga: https://github.com/Margaruga/JavaWhatsApp
 
 This is done thanks to Yowsup: https://github.com/tgalal/yowsup
-
-This works as is today but it hasn't been tested deeply, I just shared it because
-it may be helpful for someone.
 
 # Steps
 
@@ -36,40 +34,31 @@ it may be helpful for someone.
         public static void main(String[] args) throws ClientIsNotInit {
 
             boolean run = true;
-
-            Client.init("/usr/bin/python", "JavaWhatsApp/yowsup/yowsupclient.py");
-
+            Client client = new Client("/usr/bin/python", "Java4Whatsapp/yowsup/yowsupclient.py");
+            client.init();
             while (run) {
-
-                Client.ListenIncomingMessages();
-
-                ArrayList<Contact> unreaden = Client.getUnseenContacts();
-
+                client.listenIncomingMessages();
+                ArrayList<Contact> unreaden = client.getUnseenContacts();
                 if (!unreaden.isEmpty()) {
-
                     for (Contact ur : unreaden) {
-
                         String from = ur.getNumber();
                         String text = ur.getUnseenMessage();
-
                         System.out.println(from + "-" + text);
-
                         if (text.equals("stop")) {
-                            Client.killit();
+                            client.killit();
                             run = false;
                             break;
                         }
-
-                        Client.sendMessage(from, text);
-
+                        client.sendMessage(from, text);
                     }
-
                 } else {
-
                     System.out.println("There are not new messages");
-
                 }
             }
         }
-
     }
+
+
+# Updates
+
+- 2.0 : Cleaned up the Code. The Client now has to be initialized.  
