@@ -1,9 +1,10 @@
 
 
-# JavaWhatsApp
+# Whatsapp4Java
 
 Send and listen messages through WhatsApp from a Java Program.
 
+This is done thanks to Margaruga: https://github.com/Margaruga/JavaWhatsApp
 This is done thanks to Yowsup: https://github.com/tgalal/yowsup
 
 This works as is today but it hasn't been tested deeply, I just shared it because
