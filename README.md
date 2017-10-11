@@ -1,6 +1,6 @@
 
 
-# Whatsapp4Java
+# WhatsApp4Java
 
 Send and listen messages through WhatsApp from a Java Program.
 
